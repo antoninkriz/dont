@@ -1,14 +1,15 @@
 {
-  "manifest_version": 2,
+  "manifest_version": 3,
   "name": "Don't Make Me Watch",
-  "description":"Keep ads from pausing when you switch to another tab",
-  "version":"2.0.0",
+  "description":"Prevent window/tab change detection",
+  "version":"3.0.0",
   "icons":{"16":"16.png","48":"48.png","128":"128.png"},
   "content_scripts": [
     {
       "matches": ["*://*/*"],
       "js":["dont.js"],
-      "run_at":"document_start"
+      "run_at":"document_start",
+      "all_frames": true
     }
   ]
 }
