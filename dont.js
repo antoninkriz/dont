@@ -1,14 +1,31 @@
 function _DONT_() {
-    for (let t of ["visibilitychange", "webkitvisibilitychange", "blur"]) {
+    const eventTypes = ['visibilitychange', 'webkitvisibilitychange', 'msvisibilitychange', 'mozvisibilitychange', 'blur'];
+
+    Object.defineProperty(window.document, 'hidden', {
+        get: function() {return false;},
+        configurable:false
+    });
+
+    Object.defineProperty(window.document, 'visibilityState', {
+        get: function() {return 'visible';},
+        configurable:false
+    });
+
+    Object.defineProperty(window.document, 'onvisibilitychange', {
+        get: function() {return undefined;},
+        configurable:false
+    });
+
+    for (const t of eventTypes) {
         window.addEventListener(t, function(e) {
             e.stopImmediatePropagation();
         }, true);
     }
 
-    let x = window.Node.prototype.addEventListener;
+    let evListen = window.Node.prototype.addEventListener;
     window.Node.prototype.addEventListener = function(e) {
-        if (e !== 'visibilitychange' && e !== 'webkitvisibilitychange' && e !== 'blur') {
-            x.apply(this, arguments)
+        if (!eventTypes.includes(e)) {
+            evListen.apply(this, arguments)
         }
     }
 }

@@ -1,5 +1,5 @@
 {
-  "manifest_version": 3,
+  "manifest_version": 2,
   "name": "Don't Make Me Watch",
   "description":"Prevent window/tab change detection",
   "version":"3.0.0",
