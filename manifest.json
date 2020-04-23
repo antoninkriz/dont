@@ -3,7 +3,15 @@
   "name": "Don't Make Me Watch",
   "description":"Prevent window/tab change detection",
   "version":"3.0.0",
-  "icons":{"16":"16.png","48":"48.png","128":"128.png"},
+  "icons":{
+    "16":"16.png",
+    "32":"32.png",
+    "48":"48.png",
+    "64":"64.png",
+    "128":"128.png",
+    "256":"256.png",
+    "512":"512.png"
+  },
   "content_scripts": [
     {
       "matches": ["*://*/*"],
